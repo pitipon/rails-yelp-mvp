@@ -7,6 +7,19 @@ class ReviewsController < ApplicationController
     @reviews = Review.all
   end
 
+  def new
+    # we need @restaurant in our `simple_form_for`
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    @review = Review.new
+  end
+
+  def create
+    @review = Review.new(review_params)
+    # we need `restaurant_id` to asssociate review with corresponding restaurant
+    @review.restaurant = Restaurant.find(params[:restaurant_id])
+    @review.save
+  end
+
   # GET /reviews/1
   # GET /reviews/1.json
   def show
@@ -65,6 +78,10 @@ class ReviewsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_review
       @review = Review.find(params[:id])
+    end
+
+    def review_params
+      params.require(:review).permit(:content)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
