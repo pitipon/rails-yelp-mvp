@@ -1,6 +1,6 @@
 class RestaurantsController < ApplicationController
-  before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
-  before_action :find_restaurant, only: [:review]
+  before_action :set_restaurant, only: [:show, :edit, :update, :destroy, :review]
+
   # GET /restaurants
   # GET /restaurants.json
   def index
@@ -68,10 +68,6 @@ class RestaurantsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_restaurant
-      @restaurant = Restaurant.find(params[:id])
-    end
-
-    def find_restaurant
       @restaurant = Restaurant.find(params[:id])
     end
 

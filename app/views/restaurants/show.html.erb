@@ -20,5 +20,6 @@
   <%= @restaurant.category %>
 </p>
 
+<%= link_to 'Add Review', new_restaurant_review_path(@restaurant) %> |
 <%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
 <%= link_to 'Back', restaurants_path %>
