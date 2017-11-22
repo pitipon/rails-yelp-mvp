@@ -23,3 +23,9 @@
 <%= link_to 'Add Review', new_restaurant_review_path(@restaurant) %> |
 <%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
 <%= link_to 'Back', restaurants_path %>
+<br>
+<ul>
+<% @restaurant.reviews.reverse_each do |review| %>
+  <li><%= review.content %> | Rating: <%= review.rating %></li>
+<% end %>
+</ul>
